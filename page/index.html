@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人博客</title>
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/index.css">
+	<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+    <script src="./js/axios.js"></script>
+
+</head>
+<body>
+    <header class="header">
+       <div class="container">
+           <a class="title" href="">我的个人博客 | 技术博客</a>
+           <ul class="menu">
+               <li><a href="/">首页</a></li>
+               <li><a href="/sitemap.html">地图</a></li>
+               <li><a href="/about.html">关于</a></li>
+               <li><a href="/guestbook.html">留言</a></li>
+           </ul>
+           <div class="search_bar">
+               <input type="text" placeholder="输入关键词查找">
+               <button>搜索</button>
+           </div>
+       </div>
+    </header>
+
+    <div class="content">
+        <div class="content_left">
+            <div class="every_day" id="every_day">
+                <span>每日一句</span>
+                <p v-html="getContent"></p>
+            </div>
+
+            <div class="article_list" id="article_list">
+                <div class="article" v-for="article in articleList">
+                    <a v-bind:href="article.link" class="article_title">{{article.title}}</a>
+                    <p class="article_content">{{article.content}}</p>
+                    <div class="article_foot">发布于{{article.data}} |  浏览：{{article.views}} | Tags：{{article.Tags}} 内网穿透</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content_right">
+            <div class="right_moodule" id="random_tags">
+                <div>随机标签云</div>
+                <a href="/" v-for="tag in tags" v-bind:style="{color:randowColor(),fontSize:randomSize()}">{{tag}}</a>
+            </div>
+            <div class="right_moodule" id="new_hot">
+                <div>最近热门</div>
+               <ul>
+                   <li v-for="temp in titleList">
+                       <a v-bind:href="temp.link">{{temp.title}}</a>
+                    </li>
+               </ul>
+            </div>
+            <div class="right_moodule" id="new_comments">
+                <div>最新评论</div>
+                <ul>
+                    <li v-for="comment in commentList">
+                        <div>
+                            <span>{{comment.name}}</span>
+                            <span class="pull_right">{{comment.data}}</span>
+                        </div>
+                        <p>{{comment.comment}}</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="right_moodule">
+                <div>友情链接</div>
+                <span><a href="/">挨踢茶馆</a></span><span><a href="/">挨踢茶馆</a></span>
+                <span><a href="/">挨踢茶馆</a></span><span><a href="/">挨踢茶馆</a></span>
+                <span><a href="/">挨踢茶馆</a></span><span><a href="/">挨踢茶馆</a></span>
+                <span><a href="/">挨踢茶馆</a></span><span><a href="/">挨踢茶馆</a></span>
+                <span><a href="/">挨踢茶馆</a></span><span><a href="/">挨踢茶馆</a></span>
+                <span><a href="/">挨踢茶馆</a></span><span><a href="/">挨踢茶馆</a></span>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <ul>
+               
+            <li>C/C++</li>
+            <li> wordpress</li>
+            <li> 关于SEO分享经验</li>
+            <li> 听听音乐</li>
+            <li>幽默搞笑</li>
+            <li>建站经验</li>
+            <li>新闻资讯</li>
+            <li> 模拟飞行</li>
+            <li> 片言碎语</li>
+            <li> 玩转手机</li>
+            <li>编程基础</li>
+            <li> 视频分享</li>
+        </ul>
+        <p>Copyright © 2010-2021 个人博客 All rights reserved. 由免费开源的WordPress强力驱动. 鲁ICP备14017955号-1</p>
+    </footer>
+    <script src="./js/index.js"></script>
+    <script src="./js/base.js"></script>
+</body>
+</html>
