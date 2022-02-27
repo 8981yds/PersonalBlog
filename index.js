@@ -9,6 +9,6 @@ app.post("/editEveryDay",loader.get("/editEveryDay"));
 app.get("/queryEveryDay",loader.get("/queryEveryDay"));
 
 app.listen(globalConfig.port,function(){
-    console.log("服务器已启动");
+    console.log("服务器已启动了");
 });
 
